@@ -1,5 +1,5 @@
 /**
- * Zenvy Free Shipping Progress Bar - frontend styles.
+ * Zenvy Shipping Progress Bar - frontend styles.
  *
  * Colors and radius come from CSS custom properties that are injected with
  * wp_add_inline_style(): --zenvy-fspb-bg, --zenvy-fspb-fill, --zenvy-fspb-text, --zenvy-fspb-radius.

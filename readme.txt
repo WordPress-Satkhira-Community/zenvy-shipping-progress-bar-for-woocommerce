@@ -1,8 +1,8 @@
-=== Zenvy Free Shipping Progress Bar for WooCommerce ===
+=== Zenvy Shipping Progress Bar for WooCommerce ===
 Contributors: wpdelower
 Tags: free shipping bar, woocommerce free shipping, progress bar, cart upsell, free shipping progress bar
 Requires at least: 6.0
-Tested up to: 7.1 
+Tested up to: 6.7
 Requires PHP: 7.4
 Requires Plugins: woocommerce
 Stable tag: 1.0.1
@@ -13,7 +13,7 @@ Add a free shipping progress bar to your WooCommerce mini-cart, cart and checkou
 
 == Description ==
 
-**Zenvy Free Shipping Progress Bar for WooCommerce** shows customers exactly how much more they need to spend to unlock free shipping. A clear WooCommerce free shipping progress bar is one of the simplest cart upsell tactics for increasing average order value and reducing cart abandonment.
+**Zenvy Shipping Progress Bar for WooCommerce** shows customers exactly how much more they need to spend to unlock free shipping. A clear WooCommerce free shipping progress bar is one of the simplest cart upsell tactics for increasing average order value and reducing cart abandonment.
 
 The bar reads your real WooCommerce free shipping threshold automatically, updates instantly when products are added or removed, and works with both the classic cart and the new Cart and Checkout Blocks. The plugin is fully **HPOS compatible** (High-Performance Order Storage).
 
@@ -67,11 +67,11 @@ Pro features are shown as locked options in the settings page. A companion Pro p
 == Installation ==
 
 1. Make sure WooCommerce is installed and active.
-2. Upload the `zenvy-free-shipping-progress-bar` folder to the `/wp-content/plugins/` directory, or install the plugin through the WordPress Plugins screen.
+2. Upload the `zenvy-shipping-progress-bar-for-woocommerce` folder to the `/wp-content/plugins/` directory, or install the plugin through the WordPress Plugins screen.
 3. Activate the plugin through the Plugins screen.
 4. In WooCommerce, go to Shipping, open a shipping zone and add the Free Shipping method with a minimum order amount (recommended).
 5. That is it. The bar appears at the top of your store automatically.
-6. Optional: go to Zenvy > Free Shipping Bar to choose where the bar appears, edit the messages and pick your colors.
+6. Optional: go to Zenvy > Shipping Bar to choose where the bar appears, edit the messages and pick your colors.
 
 == Frequently Asked Questions ==
 

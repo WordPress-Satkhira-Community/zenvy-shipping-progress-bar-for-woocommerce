@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name:       Zenvy Free Shipping Progress Bar for WooCommerce
- * Plugin URI:        https://delowerhossain/plugins/zenvy-free-shipping-progress-bar/
+ * Plugin Name:       Zenvy Shipping Progress Bar for WooCommerce
+ * Plugin URI:        https://delowerhossain.com/plugins/zenvy-shipping-progress-bar-for-woocommerce/
  * Description:       Increase your average order value with a smart free shipping progress bar. Auto-detects your WooCommerce free shipping threshold and updates in real time on the mini-cart, cart and checkout.
  * Version:           1.0.1
  * Requires at least: 6.0
@@ -11,11 +11,11 @@
  * Author URI:        https://delowerhossain.com/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       zenvy-free-shipping-progress-bar
+ * Text Domain:       zenvy-shipping-progress-bar-for-woocommerce
  * WC requires at least: 7.0
  * WC tested up to:   9.3
  *
- * @package Zenvy_Free_Shipping_Progress_Bar
+ * @package Zenvy_Shipping_Progress_Bar
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -66,7 +66,7 @@ function zenvy_fspb_missing_woocommerce_notice() {
 	<div class="notice notice-error">
 		<p>
 			<?php
-			echo esc_html__( 'Zenvy Free Shipping Progress Bar for WooCommerce requires WooCommerce to be installed and active.', 'zenvy-free-shipping-progress-bar' );
+			echo esc_html__( 'Zenvy Shipping Progress Bar for WooCommerce requires WooCommerce to be installed and active.', 'zenvy-shipping-progress-bar-for-woocommerce' );
 			?>
 		</p>
 	</div>

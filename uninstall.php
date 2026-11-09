@@ -2,7 +2,7 @@
 /**
  * Uninstall routine: removes plugin data when "Delete data on uninstall" is enabled.
  *
- * @package Zenvy_Free_Shipping_Progress_Bar
+ * @package Zenvy_Shipping_Progress_Bar
  */
 
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {

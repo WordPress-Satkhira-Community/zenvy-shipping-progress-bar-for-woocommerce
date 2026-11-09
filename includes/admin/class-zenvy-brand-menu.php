@@ -5,7 +5,7 @@
  * Every Zenvy plugin can ship this file. Only the first copy loaded defines the class,
  * and the top-level "Zenvy" menu is registered only when the slug does not exist yet.
  *
- * @package Zenvy_Free_Shipping_Progress_Bar
+ * @package Zenvy_Shipping_Progress_Bar
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -133,8 +133,8 @@ if ( ! class_exists( 'Zenvy_Brand_Menu' ) ) {
 
 			if ( ! self::top_level_exists() ) {
 				add_menu_page(
-					__( 'Zenvy Plugins', 'zenvy-free-shipping-progress-bar' ),
-					__( 'Zenvy', 'zenvy-free-shipping-progress-bar' ),
+					__( 'Zenvy Plugins', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+					__( 'Zenvy', 'zenvy-shipping-progress-bar-for-woocommerce' ),
 					$capability,
 					self::MENU_SLUG,
 					array( __CLASS__, 'render_dashboard' ),
@@ -145,8 +145,8 @@ if ( ! class_exists( 'Zenvy_Brand_Menu' ) ) {
 				// Rename the automatic first submenu entry to "Dashboard".
 				add_submenu_page(
 					self::MENU_SLUG,
-					__( 'Zenvy Plugins', 'zenvy-free-shipping-progress-bar' ),
-					__( 'Dashboard', 'zenvy-free-shipping-progress-bar' ),
+					__( 'Zenvy Plugins', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+					__( 'Dashboard', 'zenvy-shipping-progress-bar-for-woocommerce' ),
 					$capability,
 					self::MENU_SLUG,
 					array( __CLASS__, 'render_dashboard' )
@@ -173,8 +173,8 @@ if ( ! class_exists( 'Zenvy_Brand_Menu' ) ) {
 		public static function render_dashboard() {
 			?>
 			<div class="wrap">
-				<h1><?php echo esc_html__( 'Zenvy Plugins', 'zenvy-free-shipping-progress-bar' ); ?></h1>
-				<p><?php echo esc_html__( 'Manage your Zenvy plugins from one place.', 'zenvy-free-shipping-progress-bar' ); ?></p>
+				<h1><?php echo esc_html__( 'Zenvy Plugins', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></h1>
+				<p><?php echo esc_html__( 'Manage your Zenvy plugins from one place.', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></p>
 				<div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:20px;">
 					<?php foreach ( self::$items as $slug => $item ) : ?>
 						<?php if ( ! current_user_can( $item['capability'] ) ) : ?>
@@ -189,12 +189,12 @@ if ( ! class_exists( 'Zenvy_Brand_Menu' ) ) {
 								<p>
 									<?php
 									/* translators: %s: plugin version number. */
-									echo esc_html( sprintf( __( 'Version %s', 'zenvy-free-shipping-progress-bar' ), $item['version'] ) );
+									echo esc_html( sprintf( __( 'Version %s', 'zenvy-shipping-progress-bar-for-woocommerce' ), $item['version'] ) );
 									?>
 								</p>
 							<?php endif; ?>
 							<a class="button button-primary" href="<?php echo esc_url( admin_url( 'admin.php?page=' . $slug ) ); ?>">
-								<?php echo esc_html__( 'Open Settings', 'zenvy-free-shipping-progress-bar' ); ?>
+								<?php echo esc_html__( 'Open Settings', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?>
 							</a>
 						</div>
 					<?php endforeach; ?>

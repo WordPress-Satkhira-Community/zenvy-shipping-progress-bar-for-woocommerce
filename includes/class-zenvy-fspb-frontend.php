@@ -2,7 +2,7 @@
 /**
  * Frontend rendering, fragments, shortcode and assets.
  *
- * @package Zenvy_Free_Shipping_Progress_Bar
+ * @package Zenvy_Shipping_Progress_Bar
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -322,7 +322,7 @@ class Zenvy_FSPB_Frontend {
 			do_action( 'zenvy_fspb_before_bar_content', $data, $settings );
 			?>
 			<div class="zenvy-fspb-message" aria-live="polite"><?php echo wp_kses_post( $message ); ?></div>
-			<div class="zenvy-fspb-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="<?php echo esc_attr( round( $percentage ) ); ?>" aria-label="<?php echo esc_attr__( 'Free shipping progress', 'zenvy-free-shipping-progress-bar' ); ?>">
+			<div class="zenvy-fspb-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="<?php echo esc_attr( round( $percentage ) ); ?>" aria-label="<?php echo esc_attr__( 'Shipping progress', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?>">
 				<div class="zenvy-fspb-fill" style="width:<?php echo esc_attr( $percentage ); ?>%"></div>
 			</div>
 			<?php

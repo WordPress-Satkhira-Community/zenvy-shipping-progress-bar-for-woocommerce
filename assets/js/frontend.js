@@ -1,5 +1,5 @@
 /**
- * Zenvy Free Shipping Progress Bar - frontend script (vanilla JS, no jQuery).
+ * Zenvy Shipping Progress Bar - frontend script (vanilla JS, no jQuery).
  *
  * Classic AJAX add-to-cart and mini-cart updates are handled by WooCommerce fragments.
  * This script covers Cart/Checkout Block updates (Store API) and acts as a lightweight

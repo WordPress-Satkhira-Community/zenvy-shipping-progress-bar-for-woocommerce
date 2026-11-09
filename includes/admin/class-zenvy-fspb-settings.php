@@ -2,7 +2,7 @@
 /**
  * Admin settings page, saving and sanitization.
  *
- * @package Zenvy_Free_Shipping_Progress_Bar
+ * @package Zenvy_Shipping_Progress_Bar
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -15,7 +15,7 @@ class Zenvy_FSPB_Settings {
 	/**
 	 * Admin page slug.
 	 */
-	const PAGE_SLUG = 'zenvy-free-shipping-bar';
+	const PAGE_SLUG = 'zenvy-shipping-bar';
 
 	/**
 	 * Capability required to manage the plugin.
@@ -46,11 +46,11 @@ class Zenvy_FSPB_Settings {
 		Zenvy_Brand_Menu::add_item(
 			array(
 				'slug'        => self::PAGE_SLUG,
-				'page_title'  => __( 'Free Shipping Progress Bar', 'zenvy-free-shipping-progress-bar' ),
-				'menu_title'  => __( 'Free Shipping Bar', 'zenvy-free-shipping-progress-bar' ),
+				'page_title'  => __( 'Shipping Progress Bar', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+				'menu_title'  => __( 'Shipping Bar', 'zenvy-shipping-progress-bar-for-woocommerce' ),
 				'capability'  => self::CAPABILITY,
 				'callback'    => array( $this, 'render_page' ),
-				'description' => __( 'Show a live free shipping progress bar to boost order value.', 'zenvy-free-shipping-progress-bar' ),
+				'description' => __( 'Show a live shipping progress bar to boost order value.', 'zenvy-shipping-progress-bar-for-woocommerce' ),
 				'version'     => ZENVY_FSPB_VERSION,
 			)
 		);
@@ -66,7 +66,7 @@ class Zenvy_FSPB_Settings {
 		$url = admin_url( 'admin.php?page=' . self::PAGE_SLUG );
 		array_unshift(
 			$links,
-			'<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'zenvy-free-shipping-progress-bar' ) . '</a>'
+			'<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'zenvy-shipping-progress-bar-for-woocommerce' ) . '</a>'
 		);
 		return $links;
 	}
@@ -107,10 +107,10 @@ class Zenvy_FSPB_Settings {
 					'thousand' => wc_get_price_thousand_separator(),
 				),
 				'i18n'     => array(
-					'empty'    => __( 'Empty cart', 'zenvy-free-shipping-progress-bar' ),
-					'progress' => __( 'In progress', 'zenvy-free-shipping-progress-bar' ),
-					'unlocked' => __( 'Free shipping unlocked', 'zenvy-free-shipping-progress-bar' ),
-					'hidden'   => __( 'Bar is hidden while the cart is empty', 'zenvy-free-shipping-progress-bar' ),
+					'empty'    => __( 'Empty cart', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+					'progress' => __( 'In progress', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+					'unlocked' => __( 'Free shipping unlocked', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+					'hidden'   => __( 'Bar is hidden while the cart is empty', 'zenvy-shipping-progress-bar-for-woocommerce' ),
 				),
 			)
 		);
@@ -124,7 +124,7 @@ class Zenvy_FSPB_Settings {
 	public function handle_save() {
 		if ( ! current_user_can( self::CAPABILITY ) ) {
 			wp_die(
-				esc_html__( 'You do not have permission to perform this action.', 'zenvy-free-shipping-progress-bar' ),
+				esc_html__( 'You do not have permission to perform this action.', 'zenvy-shipping-progress-bar-for-woocommerce' ),
 				'',
 				array( 'response' => 403 )
 			);
@@ -262,10 +262,10 @@ class Zenvy_FSPB_Settings {
 	 */
 	private function get_tabs() {
 		$tabs = array(
-			'general' => __( 'General & Goal', 'zenvy-free-shipping-progress-bar' ),
-			'display' => __( 'Display & Messages', 'zenvy-free-shipping-progress-bar' ),
-			'design'  => __( 'Design & Colors', 'zenvy-free-shipping-progress-bar' ),
-			'pro'     => __( 'Free vs Pro', 'zenvy-free-shipping-progress-bar' ),
+			'general' => __( 'General & Goal', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+			'display' => __( 'Display & Messages', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+			'design'  => __( 'Design & Colors', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+			'pro'     => __( 'Free vs Pro', 'zenvy-shipping-progress-bar-for-woocommerce' ),
 		);
 
 		/**
@@ -285,23 +285,23 @@ class Zenvy_FSPB_Settings {
 		$features = array(
 			'milestones' => array(
 				'tab'         => 'general',
-				'title'       => __( 'Multi-Tier Milestones', 'zenvy-free-shipping-progress-bar' ),
-				'description' => __( 'Add several reward tiers on one bar: free shipping, a free gift or a discount.', 'zenvy-free-shipping-progress-bar' ),
+				'title'       => __( 'Multi-Tier Milestones', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+				'description' => __( 'Add several reward tiers on one bar: free shipping, a free gift or a discount.', 'zenvy-shipping-progress-bar-for-woocommerce' ),
 			),
 			'sticky_bar' => array(
 				'tab'         => 'display',
-				'title'       => __( 'Sticky Top Bar', 'zenvy-free-shipping-progress-bar' ),
-				'description' => __( 'Keep the top bar fixed while customers scroll, with a close button and page rules.', 'zenvy-free-shipping-progress-bar' ),
+				'title'       => __( 'Sticky Top Bar', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+				'description' => __( 'Keep the top bar fixed while customers scroll, with a close button and page rules.', 'zenvy-shipping-progress-bar-for-woocommerce' ),
 			),
 			'upsell'     => array(
 				'tab'         => 'display',
-				'title'       => __( '1-Click In-Bar Upsell Product', 'zenvy-free-shipping-progress-bar' ),
-				'description' => __( 'Suggest a product inside the bar that closes the gap to free shipping.', 'zenvy-free-shipping-progress-bar' ),
+				'title'       => __( '1-Click In-Bar Upsell Product', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+				'description' => __( 'Suggest a product inside the bar that closes the gap to free shipping.', 'zenvy-shipping-progress-bar-for-woocommerce' ),
 			),
 			'confetti'   => array(
 				'tab'         => 'design',
-				'title'       => __( 'Confetti Celebration Animation', 'zenvy-free-shipping-progress-bar' ),
-				'description' => __( 'Celebrate with a confetti burst when the customer unlocks the reward.', 'zenvy-free-shipping-progress-bar' ),
+				'title'       => __( 'Confetti Celebration Animation', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+				'description' => __( 'Celebrate with a confetti burst when the customer unlocks the reward.', 'zenvy-shipping-progress-bar-for-woocommerce' ),
 			),
 		);
 
@@ -324,7 +324,7 @@ class Zenvy_FSPB_Settings {
 		 *
 		 * @param string $url Upgrade URL.
 		 */
-		return (string) apply_filters( 'zenvy_fspb_upgrade_url', 'https://dbuggers.com/' );
+		return (string) apply_filters( 'zenvy_fspb_upgrade_url', 'https://delowerhossain.com/plugins/zenvy-shipping-progress-bar-for-woocommerce/' );
 	}
 
 	/**
@@ -334,7 +334,7 @@ class Zenvy_FSPB_Settings {
 	 */
 	public function render_page() {
 		if ( ! current_user_can( self::CAPABILITY ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'zenvy-free-shipping-progress-bar' ), '', array( 'response' => 403 ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'zenvy-shipping-progress-bar-for-woocommerce' ), '', array( 'response' => 403 ) );
 		}
 
 		$settings = Zenvy_FSPB_Core::get_settings();
@@ -342,26 +342,26 @@ class Zenvy_FSPB_Settings {
 		$saved    = $this->pull_notice();
 		?>
 		<div class="wrap zenvy-fspb-admin" id="zenvy-fspb-admin">
-			<h1 class="screen-reader-text"><?php echo esc_html__( 'Free Shipping Progress Bar', 'zenvy-free-shipping-progress-bar' ); ?></h1>
+			<h1 class="screen-reader-text"><?php echo esc_html__( 'Shipping Progress Bar', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></h1>
 
 			<div class="zenvy-fspb-header">
 				<div class="zenvy-fspb-brand">
 					<span class="zenvy-fspb-logo" aria-hidden="true">Z</span>
 					<div>
-						<span class="zenvy-fspb-title"><?php echo esc_html__( 'Free Shipping Progress Bar', 'zenvy-free-shipping-progress-bar' ); ?></span>
-						<span class="zenvy-fspb-subtitle"><?php echo esc_html__( 'by Zenvy for WooCommerce', 'zenvy-free-shipping-progress-bar' ); ?></span>
+						<span class="zenvy-fspb-title"><?php echo esc_html__( 'Shipping Progress Bar', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></span>
+						<span class="zenvy-fspb-subtitle"><?php echo esc_html__( 'by Zenvy for WooCommerce', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></span>
 					</div>
 				</div>
 				<span class="zenvy-fspb-version">
 					<?php
 					/* translators: %s: plugin version number. */
-					echo esc_html( sprintf( __( 'Version %s', 'zenvy-free-shipping-progress-bar' ), ZENVY_FSPB_VERSION ) );
+					echo esc_html( sprintf( __( 'Version %s', 'zenvy-shipping-progress-bar-for-woocommerce' ), ZENVY_FSPB_VERSION ) );
 					?>
 				</span>
 			</div>
 
 			<?php if ( $saved ) : ?>
-				<div class="notice notice-success is-dismissible"><p><?php echo esc_html__( 'Settings saved.', 'zenvy-free-shipping-progress-bar' ); ?></p></div>
+				<div class="notice notice-success is-dismissible"><p><?php echo esc_html__( 'Settings saved.', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></p></div>
 			<?php endif; ?>
 
 			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" id="zenvy-fspb-form">
@@ -370,7 +370,7 @@ class Zenvy_FSPB_Settings {
 
 				<?php $this->render_preview( $settings ); ?>
 
-				<div class="zenvy-fspb-tabs" role="tablist" aria-label="<?php echo esc_attr__( 'Settings sections', 'zenvy-free-shipping-progress-bar' ); ?>">
+				<div class="zenvy-fspb-tabs" role="tablist" aria-label="<?php echo esc_attr__( 'Settings sections', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?>">
 					<?php foreach ( $tabs as $tab_id => $tab_label ) : ?>
 						<button type="button" class="zenvy-fspb-tab" role="tab" id="zenvy-fspb-tab-btn-<?php echo esc_attr( $tab_id ); ?>" data-tab="<?php echo esc_attr( $tab_id ); ?>" aria-controls="zenvy-fspb-tab-<?php echo esc_attr( $tab_id ); ?>" aria-selected="false">
 							<?php echo esc_html( $tab_label ); ?>
@@ -397,7 +397,7 @@ class Zenvy_FSPB_Settings {
 				<?php endforeach; ?>
 
 				<div class="zenvy-fspb-savebar">
-					<button type="submit" class="button button-primary button-hero"><?php echo esc_html__( 'Save Changes', 'zenvy-free-shipping-progress-bar' ); ?></button>
+					<button type="submit" class="button button-primary button-hero"><?php echo esc_html__( 'Save Changes', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></button>
 				</div>
 			</form>
 		</div>
@@ -415,9 +415,9 @@ class Zenvy_FSPB_Settings {
 		?>
 		<div class="zenvy-fspb-preview-card">
 			<div class="zenvy-fspb-preview-head">
-				<span class="zenvy-fspb-preview-label"><?php echo esc_html__( 'Live Preview', 'zenvy-free-shipping-progress-bar' ); ?></span>
+				<span class="zenvy-fspb-preview-label"><?php echo esc_html__( 'Live Preview', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></span>
 				<div class="zenvy-fspb-preview-controls">
-					<label for="zenvy-fspb-preview-range"><?php echo esc_html__( 'Simulate cart progress', 'zenvy-free-shipping-progress-bar' ); ?></label>
+					<label for="zenvy-fspb-preview-range"><?php echo esc_html__( 'Simulate cart progress', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></label>
 					<input type="range" id="zenvy-fspb-preview-range" min="0" max="100" value="45" />
 					<span class="zenvy-fspb-preview-state" id="zenvy-fspb-preview-state" aria-live="polite"></span>
 				</div>
@@ -425,7 +425,7 @@ class Zenvy_FSPB_Settings {
 			<div class="zenvy-fspb-preview-stage" id="zenvy-fspb-preview-stage">
 				<div class="zenvy-fspb-wrapper zenvy-fspb-preset-<?php echo esc_attr( $preset ); ?>" id="zenvy-fspb-preview">
 					<div class="zenvy-fspb-message"></div>
-					<div class="zenvy-fspb-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="45" aria-label="<?php echo esc_attr__( 'Free shipping progress preview', 'zenvy-free-shipping-progress-bar' ); ?>">
+					<div class="zenvy-fspb-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="45" aria-label="<?php echo esc_attr__( 'Free shipping progress preview', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?>">
 						<div class="zenvy-fspb-fill" style="width:45%"></div>
 					</div>
 				</div>
@@ -443,29 +443,29 @@ class Zenvy_FSPB_Settings {
 	private function render_tab_general( $settings ) {
 		?>
 		<div class="zenvy-fspb-card">
-			<h2><?php echo esc_html__( 'Free shipping goal', 'zenvy-free-shipping-progress-bar' ); ?></h2>
-			<p class="zenvy-fspb-card__intro"><?php echo esc_html__( 'Choose how the amount customers need to reach is calculated.', 'zenvy-free-shipping-progress-bar' ); ?></p>
+			<h2><?php echo esc_html__( 'Free shipping goal', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></h2>
+			<p class="zenvy-fspb-card__intro"><?php echo esc_html__( 'Choose how the amount customers need to reach is calculated.', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></p>
 
 			<div class="zenvy-fspb-choice-group">
 				<label class="zenvy-fspb-choice">
 					<input type="radio" name="zenvy_fspb_settings[calc_mode]" value="auto" data-zenvy-setting="calc_mode" <?php checked( 'auto', $settings['calc_mode'] ); ?> />
 					<span class="zenvy-fspb-choice__body">
-						<strong><?php echo esc_html__( 'Auto-detect (recommended)', 'zenvy-free-shipping-progress-bar' ); ?></strong>
-						<em><?php echo esc_html__( 'Reads the minimum amount of the Free Shipping method in the customer\'s matched WooCommerce shipping zone.', 'zenvy-free-shipping-progress-bar' ); ?></em>
+						<strong><?php echo esc_html__( 'Auto-detect (recommended)', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></strong>
+						<em><?php echo esc_html__( 'Reads the minimum amount of the Free Shipping method in the customer\'s matched WooCommerce shipping zone.', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></em>
 					</span>
 				</label>
 				<label class="zenvy-fspb-choice">
 					<input type="radio" name="zenvy_fspb_settings[calc_mode]" value="manual" data-zenvy-setting="calc_mode" <?php checked( 'manual', $settings['calc_mode'] ); ?> />
 					<span class="zenvy-fspb-choice__body">
-						<strong><?php echo esc_html__( 'Manual goal only', 'zenvy-free-shipping-progress-bar' ); ?></strong>
-						<em><?php echo esc_html__( 'Always use the fixed amount below.', 'zenvy-free-shipping-progress-bar' ); ?></em>
+						<strong><?php echo esc_html__( 'Manual goal only', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></strong>
+						<em><?php echo esc_html__( 'Always use the fixed amount below.', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></em>
 					</span>
 				</label>
 			</div>
 
 			<div class="zenvy-fspb-field zenvy-fspb-field--stack">
-				<label class="zenvy-fspb-field__label" for="zenvy-fspb-manual-goal"><?php echo esc_html__( 'Manual fallback goal', 'zenvy-free-shipping-progress-bar' ); ?></label>
-				<span class="zenvy-fspb-field__desc"><?php echo esc_html__( 'Used when Auto-detect is off, or when no free shipping minimum is found for the customer\'s zone.', 'zenvy-free-shipping-progress-bar' ); ?></span>
+				<label class="zenvy-fspb-field__label" for="zenvy-fspb-manual-goal"><?php echo esc_html__( 'Manual fallback goal', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></label>
+				<span class="zenvy-fspb-field__desc"><?php echo esc_html__( 'Used when Auto-detect is off, or when no free shipping minimum is found for the customer\'s zone.', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></span>
 				<div class="zenvy-fspb-input-group">
 					<span class="zenvy-fspb-input-prefix"><?php echo esc_html( get_woocommerce_currency_symbol() ); ?></span>
 					<input type="number" id="zenvy-fspb-manual-goal" name="zenvy_fspb_settings[manual_goal]" data-zenvy-setting="manual_goal" min="0" step="0.01" value="<?php echo esc_attr( $settings['manual_goal'] ); ?>" />
@@ -474,12 +474,12 @@ class Zenvy_FSPB_Settings {
 		</div>
 
 		<div class="zenvy-fspb-card">
-			<h2><?php echo esc_html__( 'Cart calculation', 'zenvy-free-shipping-progress-bar' ); ?></h2>
+			<h2><?php echo esc_html__( 'Cart calculation', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></h2>
 			<?php
 			$this->field_toggle(
 				'deduct_coupons',
-				__( 'Deduct coupons and discounts', 'zenvy-free-shipping-progress-bar' ),
-				__( 'Subtract coupon discounts from the cart subtotal when measuring progress. Carts with only virtual products never show the bar.', 'zenvy-free-shipping-progress-bar' ),
+				__( 'Deduct coupons and discounts', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+				__( 'Subtract coupon discounts from the cart subtotal when measuring progress. Carts with only virtual products never show the bar.', 'zenvy-shipping-progress-bar-for-woocommerce' ),
 				$settings
 			);
 			?>
@@ -488,12 +488,12 @@ class Zenvy_FSPB_Settings {
 		<?php $this->render_pro_features( 'general', $settings ); ?>
 
 		<div class="zenvy-fspb-card">
-			<h2><?php echo esc_html__( 'Data', 'zenvy-free-shipping-progress-bar' ); ?></h2>
+			<h2><?php echo esc_html__( 'Data', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></h2>
 			<?php
 			$this->field_toggle(
 				'delete_data',
-				__( 'Delete data on uninstall', 'zenvy-free-shipping-progress-bar' ),
-				__( 'Remove all plugin settings from the database when the plugin is deleted.', 'zenvy-free-shipping-progress-bar' ),
+				__( 'Delete data on uninstall', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+				__( 'Remove all plugin settings from the database when the plugin is deleted.', 'zenvy-shipping-progress-bar-for-woocommerce' ),
 				$settings
 			);
 			?>
@@ -510,40 +510,40 @@ class Zenvy_FSPB_Settings {
 	private function render_tab_display( $settings ) {
 		?>
 		<div class="zenvy-fspb-card">
-			<h2><?php echo esc_html__( 'Where to show the bar', 'zenvy-free-shipping-progress-bar' ); ?></h2>
+			<h2><?php echo esc_html__( 'Where to show the bar', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></h2>
 			<?php
-			$this->field_toggle( 'show_top_bar', __( 'Top of page bar (recommended)', 'zenvy-free-shipping-progress-bar' ), __( 'Shows the bar at the very top of your store automatically. No setup or shortcode needed.', 'zenvy-free-shipping-progress-bar' ), $settings );
+			$this->field_toggle( 'show_top_bar', __( 'Top of page bar (recommended)', 'zenvy-shipping-progress-bar-for-woocommerce' ), __( 'Shows the bar at the very top of your store automatically. No setup or shortcode needed.', 'zenvy-shipping-progress-bar-for-woocommerce' ), $settings );
 			$this->field_select(
 				'top_bar_scope',
-				__( 'Show the top bar on', 'zenvy-free-shipping-progress-bar' ),
+				__( 'Show the top bar on', 'zenvy-shipping-progress-bar-for-woocommerce' ),
 				array(
-					'all'         => __( 'Entire site', 'zenvy-free-shipping-progress-bar' ),
-					'woocommerce' => __( 'WooCommerce pages only (shop, product, cart, checkout)', 'zenvy-free-shipping-progress-bar' ),
+					'all'         => __( 'Entire site', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+					'woocommerce' => __( 'WooCommerce pages only (shop, product, cart, checkout)', 'zenvy-shipping-progress-bar-for-woocommerce' ),
 				),
 				$settings
 			);
-			$this->field_toggle( 'show_minicart', __( 'Mini-cart / side cart', 'zenvy-free-shipping-progress-bar' ), __( 'Above the buttons of the mini-cart widget.', 'zenvy-free-shipping-progress-bar' ), $settings );
-			$this->field_toggle( 'show_cart', __( 'Cart page', 'zenvy-free-shipping-progress-bar' ), __( 'Above the cart table (classic cart and Cart block). When enabled, the top bar is not repeated on the cart page.', 'zenvy-free-shipping-progress-bar' ), $settings );
-			$this->field_toggle( 'show_checkout', __( 'Checkout page', 'zenvy-free-shipping-progress-bar' ), __( 'Above the checkout form (classic checkout and Checkout block). When enabled, the top bar is not repeated on the checkout page.', 'zenvy-free-shipping-progress-bar' ), $settings );
-			$this->field_toggle( 'hide_when_empty', __( 'Hide when the cart is empty', 'zenvy-free-shipping-progress-bar' ), __( 'Do not show the initial message while the cart has no products.', 'zenvy-free-shipping-progress-bar' ), $settings );
+			$this->field_toggle( 'show_minicart', __( 'Mini-cart / side cart', 'zenvy-shipping-progress-bar-for-woocommerce' ), __( 'Above the buttons of the mini-cart widget.', 'zenvy-shipping-progress-bar-for-woocommerce' ), $settings );
+			$this->field_toggle( 'show_cart', __( 'Cart page', 'zenvy-shipping-progress-bar-for-woocommerce' ), __( 'Above the cart table (classic cart and Cart block). When enabled, the top bar is not repeated on the cart page.', 'zenvy-shipping-progress-bar-for-woocommerce' ), $settings );
+			$this->field_toggle( 'show_checkout', __( 'Checkout page', 'zenvy-shipping-progress-bar-for-woocommerce' ), __( 'Above the checkout form (classic checkout and Checkout block). When enabled, the top bar is not repeated on the checkout page.', 'zenvy-shipping-progress-bar-for-woocommerce' ), $settings );
+			$this->field_toggle( 'hide_when_empty', __( 'Hide when the cart is empty', 'zenvy-shipping-progress-bar-for-woocommerce' ), __( 'Do not show the initial message while the cart has no products.', 'zenvy-shipping-progress-bar-for-woocommerce' ), $settings );
 			?>
 			<div class="zenvy-fspb-shortcode">
-				<span class="zenvy-fspb-field__label"><?php echo esc_html__( 'Shortcode', 'zenvy-free-shipping-progress-bar' ); ?></span>
+				<span class="zenvy-fspb-field__label"><?php echo esc_html__( 'Shortcode', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></span>
 				<code>[zenvy_shipping_bar]</code>
-				<span class="zenvy-fspb-field__desc"><?php echo esc_html__( 'Optional. Use it to place the bar exactly where you want, for example inside a page, widget or block theme template.', 'zenvy-free-shipping-progress-bar' ); ?></span>
+				<span class="zenvy-fspb-field__desc"><?php echo esc_html__( 'Optional. Use it to place the bar exactly where you want, for example inside a page, widget or block theme template.', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></span>
 			</div>
 		</div>
 
 		<div class="zenvy-fspb-card">
-			<h2><?php echo esc_html__( 'Messages', 'zenvy-free-shipping-progress-bar' ); ?></h2>
+			<h2><?php echo esc_html__( 'Messages', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></h2>
 			<p class="zenvy-fspb-card__intro">
-				<?php echo esc_html__( 'Available placeholders:', 'zenvy-free-shipping-progress-bar' ); ?>
+				<?php echo esc_html__( 'Available placeholders:', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?>
 				<code>{goal}</code> <code>{remaining}</code> <code>{cart_total}</code>
 			</p>
 			<?php
-			$this->field_textarea( 'msg_initial', __( 'Initial message (empty cart)', 'zenvy-free-shipping-progress-bar' ), $settings );
-			$this->field_textarea( 'msg_progress', __( 'In-progress message', 'zenvy-free-shipping-progress-bar' ), $settings );
-			$this->field_textarea( 'msg_success', __( 'Success message (unlocked)', 'zenvy-free-shipping-progress-bar' ), $settings );
+			$this->field_textarea( 'msg_initial', __( 'Initial message (empty cart)', 'zenvy-shipping-progress-bar-for-woocommerce' ), $settings );
+			$this->field_textarea( 'msg_progress', __( 'In-progress message', 'zenvy-shipping-progress-bar-for-woocommerce' ), $settings );
+			$this->field_textarea( 'msg_success', __( 'Success message (unlocked)', 'zenvy-shipping-progress-bar-for-woocommerce' ), $settings );
 			?>
 		</div>
 
@@ -560,38 +560,38 @@ class Zenvy_FSPB_Settings {
 	private function render_tab_design( $settings ) {
 		?>
 		<div class="zenvy-fspb-card">
-			<h2><?php echo esc_html__( 'Style preset', 'zenvy-free-shipping-progress-bar' ); ?></h2>
+			<h2><?php echo esc_html__( 'Style preset', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></h2>
 			<div class="zenvy-fspb-choice-group zenvy-fspb-choice-group--row">
 				<label class="zenvy-fspb-choice">
 					<input type="radio" name="zenvy_fspb_settings[preset]" value="minimal" data-zenvy-setting="preset" <?php checked( 'minimal', $settings['preset'] ); ?> />
 					<span class="zenvy-fspb-choice__body">
 						<span class="zenvy-fspb-mini zenvy-fspb-mini--minimal"><span></span></span>
-						<strong><?php echo esc_html__( 'Minimal', 'zenvy-free-shipping-progress-bar' ); ?></strong>
-						<em><?php echo esc_html__( 'Modern rounded pill bar.', 'zenvy-free-shipping-progress-bar' ); ?></em>
+						<strong><?php echo esc_html__( 'Minimal', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></strong>
+						<em><?php echo esc_html__( 'Modern rounded pill bar.', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></em>
 					</span>
 				</label>
 				<label class="zenvy-fspb-choice">
 					<input type="radio" name="zenvy_fspb_settings[preset]" value="striped" data-zenvy-setting="preset" <?php checked( 'striped', $settings['preset'] ); ?> />
 					<span class="zenvy-fspb-choice__body">
 						<span class="zenvy-fspb-mini zenvy-fspb-mini--striped"><span></span></span>
-						<strong><?php echo esc_html__( 'Striped', 'zenvy-free-shipping-progress-bar' ); ?></strong>
-						<em><?php echo esc_html__( 'Animated diagonal stripes.', 'zenvy-free-shipping-progress-bar' ); ?></em>
+						<strong><?php echo esc_html__( 'Striped', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></strong>
+						<em><?php echo esc_html__( 'Animated diagonal stripes.', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></em>
 					</span>
 				</label>
 			</div>
 		</div>
 
 		<div class="zenvy-fspb-card">
-			<h2><?php echo esc_html__( 'Colors and shape', 'zenvy-free-shipping-progress-bar' ); ?></h2>
+			<h2><?php echo esc_html__( 'Colors and shape', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></h2>
 			<div class="zenvy-fspb-grid">
 				<?php
-				$this->field_color( 'color_bg', __( 'Bar background', 'zenvy-free-shipping-progress-bar' ), $settings );
-				$this->field_color( 'color_fill', __( 'Progress fill', 'zenvy-free-shipping-progress-bar' ), $settings );
-				$this->field_color( 'color_text', __( 'Message text', 'zenvy-free-shipping-progress-bar' ), $settings );
+				$this->field_color( 'color_bg', __( 'Bar background', 'zenvy-shipping-progress-bar-for-woocommerce' ), $settings );
+				$this->field_color( 'color_fill', __( 'Progress fill', 'zenvy-shipping-progress-bar-for-woocommerce' ), $settings );
+				$this->field_color( 'color_text', __( 'Message text', 'zenvy-shipping-progress-bar-for-woocommerce' ), $settings );
 				?>
 			</div>
 			<div class="zenvy-fspb-field zenvy-fspb-field--stack">
-				<label class="zenvy-fspb-field__label" for="zenvy-fspb-radius"><?php echo esc_html__( 'Border radius (px)', 'zenvy-free-shipping-progress-bar' ); ?></label>
+				<label class="zenvy-fspb-field__label" for="zenvy-fspb-radius"><?php echo esc_html__( 'Border radius (px)', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></label>
 				<div class="zenvy-fspb-range">
 					<input type="range" id="zenvy-fspb-radius" name="zenvy_fspb_settings[border_radius]" data-zenvy-setting="border_radius" min="0" max="50" step="1" value="<?php echo esc_attr( $settings['border_radius'] ); ?>" />
 					<output for="zenvy-fspb-radius" id="zenvy-fspb-radius-output"><?php echo esc_html( $settings['border_radius'] ); ?></output>
@@ -611,27 +611,27 @@ class Zenvy_FSPB_Settings {
 	 */
 	private function render_tab_pro( $settings ) {
 		$rows = array(
-			array( __( 'Auto-detect free shipping goal from shipping zones', 'zenvy-free-shipping-progress-bar' ), true, true ),
-			array( __( 'Manual fallback goal and coupon deduction', 'zenvy-free-shipping-progress-bar' ), true, true ),
-			array( __( 'Automatic top bar, mini-cart, cart, checkout and shortcode placements', 'zenvy-free-shipping-progress-bar' ), true, true ),
-			array( __( 'Cart and Checkout block support', 'zenvy-free-shipping-progress-bar' ), true, true ),
-			array( __( 'Minimal and striped style presets', 'zenvy-free-shipping-progress-bar' ), true, true ),
-			array( __( 'Live preview in the settings page', 'zenvy-free-shipping-progress-bar' ), true, true ),
-			array( __( 'Multi-tier milestones (free gift or discount)', 'zenvy-free-shipping-progress-bar' ), false, true ),
-			array( __( 'Sticky top bar (stays visible while scrolling)', 'zenvy-free-shipping-progress-bar' ), false, true ),
-			array( __( 'Confetti celebration animation', 'zenvy-free-shipping-progress-bar' ), false, true ),
-			array( __( '1-click in-bar upsell product', 'zenvy-free-shipping-progress-bar' ), false, true ),
+			array( __( 'Auto-detect free shipping goal from shipping zones', 'zenvy-shipping-progress-bar-for-woocommerce' ), true, true ),
+			array( __( 'Manual fallback goal and coupon deduction', 'zenvy-shipping-progress-bar-for-woocommerce' ), true, true ),
+			array( __( 'Automatic top bar, mini-cart, cart, checkout and shortcode placements', 'zenvy-shipping-progress-bar-for-woocommerce' ), true, true ),
+			array( __( 'Cart and Checkout block support', 'zenvy-shipping-progress-bar-for-woocommerce' ), true, true ),
+			array( __( 'Minimal and striped style presets', 'zenvy-shipping-progress-bar-for-woocommerce' ), true, true ),
+			array( __( 'Live preview in the settings page', 'zenvy-shipping-progress-bar-for-woocommerce' ), true, true ),
+			array( __( 'Multi-tier milestones (free gift or discount)', 'zenvy-shipping-progress-bar-for-woocommerce' ), false, true ),
+			array( __( 'Sticky top bar (stays visible while scrolling)', 'zenvy-shipping-progress-bar-for-woocommerce' ), false, true ),
+			array( __( 'Confetti celebration animation', 'zenvy-shipping-progress-bar-for-woocommerce' ), false, true ),
+			array( __( '1-click in-bar upsell product', 'zenvy-shipping-progress-bar-for-woocommerce' ), false, true ),
 		);
 		?>
 		<div class="zenvy-fspb-card">
-			<h2><?php echo esc_html__( 'Free vs Pro', 'zenvy-free-shipping-progress-bar' ); ?></h2>
-			<p class="zenvy-fspb-card__intro"><?php echo esc_html__( 'Everything you need to start is free. Pro adds advanced conversion tools.', 'zenvy-free-shipping-progress-bar' ); ?></p>
+			<h2><?php echo esc_html__( 'Free vs Pro', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></h2>
+			<p class="zenvy-fspb-card__intro"><?php echo esc_html__( 'Everything you need to start is free. Pro adds advanced conversion tools.', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></p>
 			<table class="zenvy-fspb-compare">
 				<thead>
 					<tr>
-						<th scope="col"><?php echo esc_html__( 'Feature', 'zenvy-free-shipping-progress-bar' ); ?></th>
-						<th scope="col"><?php echo esc_html__( 'Free', 'zenvy-free-shipping-progress-bar' ); ?></th>
-						<th scope="col"><?php echo esc_html__( 'Pro', 'zenvy-free-shipping-progress-bar' ); ?></th>
+						<th scope="col"><?php echo esc_html__( 'Feature', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></th>
+						<th scope="col"><?php echo esc_html__( 'Free', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></th>
+						<th scope="col"><?php echo esc_html__( 'Pro', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -641,7 +641,7 @@ class Zenvy_FSPB_Settings {
 							<?php foreach ( array( $row[1], $row[2] ) as $included ) : ?>
 								<td class="<?php echo esc_attr( $included ? 'is-yes' : 'is-no' ); ?>">
 									<span aria-hidden="true"><?php echo wp_kses_post( $included ? '&#10003;' : '&mdash;' ); ?></span>
-									<span class="screen-reader-text"><?php echo $included ? esc_html__( 'Included', 'zenvy-free-shipping-progress-bar' ) : esc_html__( 'Not included', 'zenvy-free-shipping-progress-bar' ); ?></span>
+									<span class="screen-reader-text"><?php echo $included ? esc_html__( 'Included', 'zenvy-shipping-progress-bar-for-woocommerce' ) : esc_html__( 'Not included', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?></span>
 								</td>
 							<?php endforeach; ?>
 						</tr>
@@ -651,7 +651,7 @@ class Zenvy_FSPB_Settings {
 			<?php if ( ! Zenvy_FSPB_Core::is_pro_active() ) : ?>
 				<p>
 					<a class="button button-primary button-hero" href="<?php echo esc_url( $this->get_upgrade_url() ); ?>" target="_blank" rel="noopener noreferrer">
-						<?php echo esc_html__( 'Learn about Zenvy Pro', 'zenvy-free-shipping-progress-bar' ); ?>
+						<?php echo esc_html__( 'Learn about Zenvy Pro', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?>
 					</a>
 				</p>
 			<?php endif; ?>
@@ -688,7 +688,7 @@ class Zenvy_FSPB_Settings {
 		?>
 		<div class="zenvy-fspb-card zenvy-fspb-card--pro">
 			<h2>
-				<?php echo esc_html__( 'Pro features', 'zenvy-free-shipping-progress-bar' ); ?>
+				<?php echo esc_html__( 'Pro features', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?>
 				<span class="zenvy-fspb-pro-badge">PRO</span>
 			</h2>
 			<?php foreach ( $features as $id => $feature ) : ?>
@@ -719,7 +719,7 @@ class Zenvy_FSPB_Settings {
 						<span class="screen-reader-text">
 							<?php
 							/* translators: %s: Pro feature name. */
-							echo esc_html( sprintf( __( '%s (Pro feature, locked)', 'zenvy-free-shipping-progress-bar' ), $feature['title'] ) );
+							echo esc_html( sprintf( __( '%s (Pro feature, locked)', 'zenvy-shipping-progress-bar-for-woocommerce' ), $feature['title'] ) );
 							?>
 						</span>
 					</label>
@@ -727,7 +727,7 @@ class Zenvy_FSPB_Settings {
 			<?php endforeach; ?>
 			<?php if ( ! $is_pro ) : ?>
 				<a class="zenvy-fspb-pro-link" href="<?php echo esc_url( $this->get_upgrade_url() ); ?>" target="_blank" rel="noopener noreferrer">
-					<?php echo esc_html__( 'Unlock with Zenvy Pro', 'zenvy-free-shipping-progress-bar' ); ?> &rarr;
+					<?php echo esc_html__( 'Unlock with Zenvy Pro', 'zenvy-shipping-progress-bar-for-woocommerce' ); ?> &rarr;
 				</a>
 			<?php endif; ?>
 		</div>

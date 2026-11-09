@@ -1,5 +1,5 @@
 /**
- * Zenvy Free Shipping Progress Bar - admin script.
+ * Zenvy Shipping Progress Bar - admin script.
  *
  * Handles the tabbed interface and the real-time live preview (vanilla JS).
  */

@@ -2,7 +2,7 @@
 /**
  * Core class: loads dependencies and exposes settings helpers.
  *
- * @package Zenvy_Free_Shipping_Progress_Bar
+ * @package Zenvy_Shipping_Progress_Bar
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -102,9 +102,9 @@ final class Zenvy_FSPB_Core {
 			'show_cart'       => 'yes',
 			'show_checkout'   => 'yes',
 			'hide_when_empty' => 'no',
-			'msg_initial'     => __( 'Free shipping on orders over {goal}!', 'zenvy-free-shipping-progress-bar' ),
-			'msg_progress'    => __( 'Add {remaining} more to unlock FREE Shipping!', 'zenvy-free-shipping-progress-bar' ),
-			'msg_success'     => __( '🎉 Congratulations! You\'ve unlocked FREE Shipping!', 'zenvy-free-shipping-progress-bar' ),
+			'msg_initial'     => __( 'Free shipping on orders over {goal}!', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+			'msg_progress'    => __( 'Add {remaining} more to unlock FREE Shipping!', 'zenvy-shipping-progress-bar-for-woocommerce' ),
+			'msg_success'     => __( '🎉 Congratulations! You\'ve unlocked FREE Shipping!', 'zenvy-shipping-progress-bar-for-woocommerce' ),
 			'preset'          => 'minimal',
 			'color_bg'        => '#e9ecef',
 			'color_fill'      => '#2ea44f',

@@ -2,7 +2,7 @@
 /**
  * Free shipping goal and cart progress calculator.
  *
- * @package Zenvy_Free_Shipping_Progress_Bar
+ * @package Zenvy_Shipping_Progress_Bar
  */
 
 defined( 'ABSPATH' ) || exit;
